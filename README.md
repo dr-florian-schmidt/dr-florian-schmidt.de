@@ -1,2 +1,2 @@
 # dr-florian-schmidt.de
-Dr. Florian Schmidt
+vibe coded with Gemini Pro
