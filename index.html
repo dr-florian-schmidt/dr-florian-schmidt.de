@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Florian Schmidt | International Tech Executive</title>
+    <!-- Prevent indexing by search engines and AI crawlers -->
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+        :root {
+            --primary: #0f172a; /* Dunkles Schiefergrau */
+            --secondary: #1e293b;
+            --accent: #0ea5e9; /* Tech-Blau */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--primary);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* --- Typografie --- */
+        h1, h2, h3 { font-weight: 700; line-height: 1.2; }
+        
+        h1 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+        h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); margin-bottom: 1.5rem; color: #fff; }
+        h3 { font-size: 1.15rem; margin-bottom: 0.5rem; color: #fff; }
+        p { margin-bottom: 1.25rem; color: var(--text-muted); font-size: 1.05rem; }
+
+        /* --- Layout Container --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            padding: clamp(4rem, 8vw, 6rem) 0 4rem;
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.95)), url('bg.jpg') center/cover no-repeat;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: clamp(2rem, 5vw, 4rem);
+            flex-wrap: wrap;
+        }
+
+        .profile-img-container {
+            flex-shrink: 0;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .profile-img-container { margin: 0; }
+        }
+
+        .profile-img {
+            width: clamp(140px, 20vw, 170px);
+            height: clamp(140px, 20vw, 170px);
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            box-shadow: 0 0 25px rgba(14, 165, 233, 0.25);
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .hero-text { text-align: left; }
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Buttons --- */
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        @media (min-width: 768px) {
+            .btn-group { justify-content: flex-start; }
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        .btn-primary { background-color: var(--accent); color: #fff; border: 1px solid var(--accent); }
+        .btn-primary:hover { background-color: #0284c7; transform: translateY(-2px); }
+
+        .btn-secondary { background-color: transparent; color: #fff; border: 1px solid var(--text-muted); }
+        .btn-secondary:hover { border-color: #fff; transform: translateY(-2px); }
+
+        /* --- Sektionen --- */
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* --- Grid für Expertise --- */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .expertise-card {
+            background: var(--secondary);
+            padding: 1.75rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.2s;
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(14, 165, 233, 0.5);
+        }
+
+        .expertise-card .icon {
+            font-size: 1.75rem;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        /* --- Milestones --- */
+        .milestone {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .milestone { grid-template-columns: 1fr 3fr; gap: 2rem; }
+        }
+
+        .company-logo {
+            display: block;
+            margin-top: 0.75rem;
+            width: 150px;
+            height: auto;
+            object-fit: contain;
+            object-position: left center;
+        }
+
+        .milestone-meta {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        
+        .milestone-meta span {
+            display: block;
+            color: var(--accent);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+
+        .milestone-content h3 { margin-bottom: 0.25rem; font-size: 1.15rem; }
+        .milestone-content h4 { 
+            color: var(--text-muted); 
+            font-size: 0.95rem; 
+            font-weight: 400; 
+            margin-bottom: 0.75rem; 
+        }
+
+        /* --- Legal Modal --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.95);
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .modal:target {
+            display: block;
+        }
+
+        .modal-content {
+            background: var(--secondary);
+            margin: 2rem auto;
+            padding: 2.5rem;
+            border-radius: 12px;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .legal-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .legal-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        .legal-links a:hover {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="profile-img-container">
+                <img src="profil.jpg" alt="Dr. Florian Schmidt" class="profile-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'170\' height=\'170\'><rect width=\'170\' height=\'170\' fill=\'%231e293b\'/><text x=\'50%\' y=\'50%\' fill=\'%2394a3b8\' font-size=\'16\' font-family=\'sans-serif\' dominant-baseline=\'middle\' text-anchor=\'middle\'>Photo missing</text></svg>'">
+            </div>
+            <div class="hero-text">
+                <h1>Dr. Florian Schmidt</h1>
+                <div class="subtitle">International Tech Executive</div>
+                <p style="color: #e2e8f0; font-size: 1.1rem; max-width: 600px; margin-bottom: 1rem;">
+                    I combine deep technological expertise (Dr.-Ing. Software Engineering) with operational P&L leadership and strong intercultural competence. My focus is on transforming and scaling complex, global R&D organizations into profitable "Delivery Machines".
+                </p>
+                <div class="btn-group">
+                    <a href="mailto:contact@dr-florian-schmidt.de" class="btn btn-primary">Get in touch</a>
+                    <a href="https://www.linkedin.com/in/dr-florian-schmidt/" target="_blank" rel="noopener" class="btn btn-secondary">LinkedIn Profile</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section id="expertise">
+            <h2>Executive Core</h2>
+            <p>Understanding technology is one thing. Structuring organizations to deliver reliably and profitably is another. I bridge the gap between Tech Vision and Commercial Growth.</p>
+            
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <div class="icon">📈</div>
+                    <h3>Corporate Turnaround</h3>
+                    <p>Managing high double-digit million P&Ls in highly political corporate environments. Post-merger integrations, restructuring dysfunctional silos, and rigorous realignment towards scalable business models.</p>
+                </div>
+                <div class="expertise-card">
+                    <div class="icon">⚙️</div>
+                    <h3>Tech-Industrialization</h3>
+                    <p>Transforming complex R&D units into operational "Delivery Machines". Implementing operational excellence through hard guardrails, process automation, and standardization.</p>
+                </div>
+                <div class="expertise-card">
+                    <div class="icon">🌍</div>
+                    <h3>Business Ramp-Up</h3>
+                    <p>Intercultural bridge-building and new market entry. Hands-on P&L experience in building and scaling global tech hubs, backed by 3 years living in China and extensive US corporate experience.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="track-record">
+            <h2>Track Record & Milestones</h2>
+            <p>Three examples of my recent mandates and permanent roles that underline my approach.</p>
+
+            <div class="milestone">
+                <div class="milestone-meta">
+                    <span>2024 – 2026</span>
+                    UL Solutions
+                    <img src="logo-ul.png" alt="UL Solutions" class="company-logo" onerror="this.style.display='none'">
+                </div>
+                <div class="milestone-content">
+                    <h3>P&L Turnaround & Post-Merger Integration</h3>
+                    <h4>General Manager Software Intensive Systems (Erlangen / US)</h4>
+                    <p>Integration of three acquired companies into a global division (approx. 400 HC) with high double-digit million P&L responsibility. Strategic shift from traditional consulting to high-margin, scalable tech services (Cyber Security, AI) while navigating a highly complex US-DE corporate matrix.</p>
+                </div>
+            </div>
+
+            <div class="milestone">
+                <div class="milestone-meta">
+                    <span>2014 – 2024</span>
+                    Elektrobit
+                    <img src="logo-eb.png" alt="Elektrobit" class="company-logo" onerror="this.style.display='none'">
+                </div>
+                <div class="milestone-content">
+                    <h3>Agile Transformation & Market Expansion</h3>
+                    <h4>Chief of Staff / Head of Connectivity / Director Customer Center China</h4>
+                    <p>Responsible for running strategic transformation and go-to-market projects. Turnaround of a stagnant 100-HC unit into an agile flagship organization. Prior to that, lived and worked in Shanghai for 3 years, building the Asian business from scratch to double-digit million revenue through active intercultural bridge-building.</p>
+                </div>
+            </div>
+
+            <div class="milestone">
+                <div class="milestone-meta">
+                    <span>2022 – 2022</span>
+                    Webasto SE
+                    <img src="logo-webasto.svg" alt="Webasto" class="company-logo" onerror="this.style.display='none'">
+                </div>
+                <div class="milestone-content">
+                    <h3>Global R&D Scaling & Crisis Management</h3>
+                    <h4>Vice President Global R&D EE (Stockdorf)</h4>
+                    <p>Consolidation of decentralized electronics & software engineers (approx. 600 HC) to mitigate the global supply chain crisis. Massive complexity reduction through hardware harmonization and establishment of a scalable Global Tech Center in Pune, India.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="leadership" style="border-bottom: none;">
+            <h2>Leadership Philosophy</h2>
+            <div class="expertise-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div class="expertise-card" style="background: transparent; border: none; padding: 0;">
+                    <h3 style="color: var(--accent);">Enablement & Structure</h3>
+                    <p>I establish clear technical and process guardrails (Automation, CI/CD). This structure allows teams to break out of micromanagement and take true end-to-end responsibility. Structure creates speed.</p>
+                </div>
+                <div class="expertise-card" style="background: transparent; border: none; padding: 0;">
+                    <h3 style="color: var(--accent);">Radical Candor</h3>
+                    <p>I discuss architectures at eye-level with engineers while defending hard business cases before the board. I communicate pragmatically, transparently, and don't shy away from conflict, even during uncomfortable stakeholder decisions.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Dr. Florian Schmidt. All rights reserved.</p>
+            <div class="legal-links">
+                <a href="#impressum">Legal Notice</a>
+                <a href="#privacy">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal für Impressum -->
+    <div id="impressum" class="modal">
+        <div class="modal-content">
+            <a href="#" class="close-modal">&times;</a>
+            <h2>Impressum / Legal Notice</h2>
+            <p><strong>Information gemäß § 5 DDG:</strong></p>
+            <p>Dr. Florian Schmidt<br>
+            91074 Herzogenaurach<br>
+            Germany</p>
+            <p><strong>Kontakt:</strong><br>
+            contact@dr-florian-schmidt.de</p>
+            <p><strong>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:</strong><br>
+            Dr. Florian Schmidt</p>
+        </div>
+    </div>
+
+    <!-- Modal für Datenschutz -->
+    <div id="privacy" class="modal">
+        <div class="modal-content">
+            <a href="#" class="close-modal">&times;</a>
+            <h2>Privacy Policy</h2>
+            <p><strong>1. Datenschutz auf einen Blick</strong></p>
+            <p>Der Schutz Ihrer persönlichen Daten ist mir ein wichtiges Anliegen. Ich behandle Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+            <p><strong>2. Hosting</strong></p>
+            <p>Diese Website wird bei GitHub Inc. (GitHub Pages) gehostet. Bei der Nutzung werden technisch notwendige Daten (z. B. IP-Adresse, Browser-Typ) vom Hoster verarbeitet, um die Seite bereitzustellen. Details finden Sie in der Datenschutzerklärung von GitHub.</p>
+            <p><strong>3. Kontakt</strong></p>
+            <p>Wenn Sie mich per E-Mail kontaktieren, werden Ihre Angaben zwecks Bearbeitung der Anfrage bei mir gespeichert. Diese Daten gebe ich nicht ohne Ihre Einwilligung weiter.</p>
+            <p><strong>4. Ihre Rechte</strong></p>
+            <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ein Recht auf Berichtigung oder Löschung dieser Daten.</p>
+        </div>
+    </div>
+
+</body>
+</html>
