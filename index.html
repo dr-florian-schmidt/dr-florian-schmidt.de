@@ -5,19 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr. Florian Schmidt | International Tech Executive</title>
     
-    <!-- Favicon: Inline SVG (No extra file upload needed) -->
-    <!-- Updated color to a more professional deep blue (#0369a1) -->
+    <!-- Favicon: Inline SVG -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%230369a1%22/><text x=%2250%%22 y=%2250%%22 fill=%22white%22 font-family=%22sans-serif%22 font-weight=%22bold%22 font-size=%2245%22 text-anchor=%22middle%22 dominant-baseline=%22central%22>FS</text></svg>">
 
-    <!-- Prevent indexing by search engines and AI crawlers -->
+    <!-- Verhindert Indexierung durch Suchmaschinen und KI-Crawler -->
     <meta name="robots" content="noindex, nofollow">
     <style>
         :root {
-            --primary: #0f172a; /* Dunkles Schiefergrau */
+            --primary: #0f172a; 
             --secondary: #1e293b;
-            --accent: #0ea5e9; /* Tech-Blau */
+            --accent: #0ea5e9; 
             --text-main: #f8fafc;
-            --text-muted: #94a3b8;
+            --text-muted: #cbd5e1; /* Kontrast leicht erhöht für bessere Lesbarkeit */
             --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
@@ -38,6 +37,12 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Fokus-Styles für Tastatur-Navigation */
+        :focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 4px;
         }
 
         /* --- Typografie --- */
@@ -190,6 +195,19 @@
             object-position: left center;
         }
 
+        /* Spezifische Logo-Styles */
+        .logo-eb {
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            padding: 3px;
+            border-radius: 4px;
+        }
+
+        .logo-bg-white {
+            background-color: white;
+            padding: 6px;
+            border-radius: 4px;
+        }
+
         .milestone-meta {
             color: var(--text-muted);
             font-weight: 500;
@@ -243,9 +261,14 @@
             position: absolute;
             top: 1rem;
             right: 1.5rem;
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--text-muted);
             text-decoration: none;
+            line-height: 1;
+        }
+
+        .close-modal:hover {
+            color: #fff;
         }
 
         /* --- Footer --- */
@@ -266,6 +289,7 @@
         .legal-links a {
             color: var(--text-muted);
             text-decoration: none;
+            padding: 0.5rem;
         }
 
         .legal-links a:hover {
@@ -274,11 +298,11 @@
     </style>
 </head>
 <body>
-<!-- Rest des Bodys bleibt identisch -->
+
     <header class="hero">
         <div class="container hero-content">
             <div class="profile-img-container">
-                <img src="profil.jpg" alt="Dr. Florian Schmidt" class="profile-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'170\' height=\'170\'><rect width=\'170\' height=\'170\' fill=\'%231e293b\'/><text x=\'50%\' y=\'50%\' fill=\'%2394a3b8\' font-size=\'16\' font-family=\'sans-serif\' dominant-baseline=\'middle\' text-anchor=\'middle\'>Photo missing</text></svg>'">
+                <img src="profil.jpg" alt="Dr. Florian Schmidt Portrait" class="profile-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'170\' height=\'170\'><rect width=\'170\' height=\'170\' fill=\'%231e293b\'/><text x=\'50%\' y=\'50%\' fill=\'%2394a3b8\' font-size=\'16\' font-family=\'sans-serif\' dominant-baseline=\'middle\' text-anchor=\'middle\'>Photo missing</text></svg>'">
             </div>
             <div class="hero-text">
                 <h1>Dr. Florian Schmidt</h1>
@@ -286,85 +310,85 @@
                 <p style="color: #e2e8f0; font-size: 1.1rem; max-width: 600px; margin-bottom: 1rem;">
                     I combine deep technological expertise (Dr.-Ing. Software Engineering) with operational P&L leadership and strong intercultural competence. My focus is on transforming and scaling complex, global R&D organizations into profitable "Delivery Machines".
                 </p>
-                <div class="btn-group">
+                <nav class="btn-group" aria-label="Contact and Social Links">
                     <a href="mailto:contact@dr-florian-schmidt.de" class="btn btn-primary">Get in touch</a>
                     <a href="https://www.linkedin.com/in/dr-florian-schmidt/" target="_blank" rel="noopener" class="btn btn-secondary">LinkedIn Profile</a>
-                </div>
+                </nav>
             </div>
         </div>
     </header>
 
     <main class="container">
         
-        <section id="expertise">
-            <h2>Executive Core</h2>
+        <section id="expertise" aria-labelledby="heading-expertise">
+            <h2 id="heading-expertise">Executive Core</h2>
             <p>Understanding technology is one thing. Structuring organizations to deliver reliably and profitably is another. I bridge the gap between Tech Vision and Commercial Growth.</p>
             
             <div class="expertise-grid">
                 <div class="expertise-card">
-                    <div class="icon">📈</div>
+                    <div class="icon" aria-hidden="true">📈</div>
                     <h3>Corporate Turnaround</h3>
                     <p>Managing high double-digit million P&Ls in highly political corporate environments. Post-merger integrations, restructuring dysfunctional silos, and rigorous realignment towards scalable business models.</p>
                 </div>
                 <div class="expertise-card">
-                    <div class="icon">⚙️</div>
+                    <div class="icon" aria-hidden="true">⚙️</div>
                     <h3>Tech-Industrialization</h3>
                     <p>Transforming complex R&D units into operational "Delivery Machines". Implementing operational excellence through hard guardrails, process automation, and standardization.</p>
                 </div>
                 <div class="expertise-card">
-                    <div class="icon">🌍</div>
+                    <div class="icon" aria-hidden="true">🌍</div>
                     <h3>Business Ramp-Up</h3>
                     <p>Intercultural bridge-building and new market entry. Hands-on P&L experience in building and scaling global tech hubs, backed by 3 years living in China and extensive US corporate experience.</p>
                 </div>
             </div>
         </section>
 
-        <section id="track-record">
-            <h2>Track Record & Milestones</h2>
+        <section id="track-record" aria-labelledby="heading-track">
+            <h2 id="heading-track">Track Record & Milestones</h2>
             <p>Three examples of my recent mandates and permanent roles that underline my approach.</p>
 
-            <div class="milestone">
+            <article class="milestone">
                 <div class="milestone-meta">
                     <span>2024 – 2026</span>
                     UL Solutions
-                    <img src="logo-ul.png" alt="UL Solutions" class="company-logo" onerror="this.style.display='none'">
+                    <img src="logo-ul.png" alt="UL Solutions Logo" class="company-logo logo-bg-white" onerror="this.style.display='none'">
                 </div>
                 <div class="milestone-content">
                     <h3>P&L Turnaround & Post-Merger Integration</h3>
                     <h4>General Manager Software Intensive Systems (Erlangen / US)</h4>
                     <p>Integration of three acquired companies into a global division (approx. 400 HC) with high double-digit million P&L responsibility. Strategic shift from traditional consulting to high-margin, scalable tech services (Cyber Security, AI) while navigating a highly complex US-DE corporate matrix.</p>
                 </div>
-            </div>
+            </article>
 
-            <div class="milestone">
+            <article class="milestone">
                 <div class="milestone-meta">
                     <span>2014 – 2024</span>
                     Elektrobit
-                    <img src="logo-eb.png" alt="Elektrobit" class="company-logo" onerror="this.style.display='none'">
+                    <img src="logo-eb.png" alt="Elektrobit Logo" class="company-logo logo-eb" onerror="this.style.display='none'">
                 </div>
                 <div class="milestone-content">
                     <h3>Agile Transformation & Market Expansion</h3>
                     <h4>Chief of Staff / Head of Connectivity / Director Customer Center China</h4>
                     <p>Responsible for running strategic transformation and go-to-market projects. Turnaround of a stagnant 100-HC unit into an agile flagship organization. Prior to that, lived and worked in Shanghai for 3 years, building the Asian business from scratch to double-digit million revenue through active intercultural bridge-building.</p>
                 </div>
-            </div>
+            </article>
 
-            <div class="milestone">
+            <article class="milestone">
                 <div class="milestone-meta">
                     <span>2022 – 2022</span>
                     Webasto SE
-                    <img src="logo-webasto.svg" alt="Webasto" class="company-logo" onerror="this.style.display='none'">
+                    <img src="logo-webasto.svg" alt="Webasto Logo" class="company-logo logo-bg-white" onerror="this.style.display='none'">
                 </div>
                 <div class="milestone-content">
                     <h3>Global R&D Scaling & Crisis Management</h3>
                     <h4>Vice President Global R&D EE (Stockdorf)</h4>
                     <p>Consolidation of decentralized electronics & software engineers (approx. 600 HC) to mitigate the global supply chain crisis. Massive complexity reduction through hardware harmonization and establishment of a scalable Global Tech Center in Pune, India.</p>
                 </div>
-            </div>
+            </article>
         </section>
 
-        <section id="leadership" style="border-bottom: none;">
-            <h2>Leadership Philosophy</h2>
+        <section id="leadership" style="border-bottom: none;" aria-labelledby="heading-leadership">
+            <h2 id="heading-leadership">Leadership Philosophy</h2>
             <div class="expertise-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
                 <div class="expertise-card" style="background: transparent; border: none; padding: 0;">
                     <h3 style="color: var(--accent);">Enablement & Structure</h3>
@@ -382,41 +406,48 @@
     <footer>
         <div class="container">
             <p>&copy; 2026 Dr. Florian Schmidt. All rights reserved.</p>
-            <div class="legal-links">
+            <nav class="legal-links" aria-label="Legal footer navigation">
                 <a href="#impressum">Legal Notice</a>
                 <a href="#privacy">Privacy Policy</a>
-            </div>
+            </nav>
         </div>
     </footer>
 
-    <div id="impressum" class="modal">
+    <!-- Modal für Impressum -->
+    <div id="impressum" class="modal" role="dialog" aria-labelledby="modal-title-legal" aria-modal="true">
         <div class="modal-content">
-            <a href="#" class="close-modal">&times;</a>
-            <h2>Impressum / Legal Notice</h2>
-            <p><strong>Information gemäß § 5 DDG:</strong></p>
-            <p>Dr. Florian Schmidt<br>
-            91074 Herzogenaurach<br>
-            Germany</p>
-            <p><strong>Kontakt:</strong><br>
-            contact@dr-florian-schmidt.de</p>
-            <p><strong>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:</strong><br>
-            Dr. Florian Schmidt</p>
+            <a href="#" class="close-modal" aria-label="Close modal">&times;</a>
+            <h2 id="modal-title-legal">Impressum / Legal Notice</h2>
+            <div lang="de">
+                <p><strong>Information gemäß § 5 DDG:</strong></p>
+                <p>Dr. Florian Schmidt<br>
+                91074 Herzogenaurach<br>
+                Germany</p>
+                <p><strong>Kontakt:</strong><br>
+                contact@dr-florian-schmidt.de</p>
+                <p><strong>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:</strong><br>
+                Dr. Florian Schmidt</p>
+            </div>
         </div>
     </div>
 
-    <div id="privacy" class="modal">
+    <!-- Modal für Datenschutz -->
+    <div id="privacy" class="modal" role="dialog" aria-labelledby="modal-title-privacy" aria-modal="true">
         <div class="modal-content">
-            <a href="#" class="close-modal">&times;</a>
-            <h2>Privacy Policy</h2>
-            <p><strong>1. Datenschutz auf einen Blick</strong></p>
-            <p>Der Schutz Ihrer persönlichen Daten ist mir ein wichtiges Anliegen. Ich behandle Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
-            <p><strong>2. Hosting</strong></p>
-            <p>Diese Website wird bei GitHub Inc. (GitHub Pages) gehostet. Bei der Nutzung werden technisch notwendige Daten (z. B. IP-Adresse, Browser-Typ) vom Hoster verarbeitet, um die Seite bereitzustellen. Details finden Sie in der Datenschutzerklärung von GitHub.</p>
-            <p><strong>3. Kontakt</strong></p>
-            <p>Wenn Sie mich per E-Mail kontaktieren, werden Ihre Angaben zwecks Bearbeitung der Anfrage bei mir gespeichert. Diese Daten gebe ich nicht ohne Ihre Einwilligung weiter.</p>
-            <p><strong>4. Ihre Rechte</strong></p>
-            <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ein Recht auf Berichtigung oder Löschung dieser Daten.</p>
+            <a href="#" class="close-modal" aria-label="Close modal">&times;</a>
+            <h2 id="modal-title-privacy">Privacy Policy</h2>
+            <div lang="de">
+                <p><strong>1. Datenschutz auf einen Blick</strong></p>
+                <p>Der Schutz Ihrer persönlichen Daten ist mir ein wichtiges Anliegen. Ich behandle Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+                <p><strong>2. Hosting</strong></p>
+                <p>Diese Website wird bei GitHub Inc. (GitHub Pages) gehostet. Bei der Nutzung werden technisch notwendige Daten (z. B. IP-Adresse, Browser-Typ) vom Hoster verarbeitet, um die Seite bereitzustellen. Details finden Sie in der Datenschutzerklärung von GitHub.</p>
+                <p><strong>3. Kontakt</strong></p>
+                <p>Wenn Sie mich per E-Mail kontaktieren, werden Ihre Angaben zwecks Bearbeitung der Anfrage bei mir gespeichert. Diese Daten gebe ich nicht ohne Ihre Einwilligung weiter.</p>
+                <p><strong>4. Ihre Rechte</strong></p>
+                <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ein Recht auf Berichtigung oder Löschung dieser Daten.</p>
+            </div>
         </div>
     </div>
+
 </body>
 </html>
