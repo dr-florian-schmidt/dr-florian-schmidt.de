@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
     <style>
         body {
             margin: 0;
-            padding: 0;
+            padding: 20px;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #121212;
             color: #ffffff;
@@ -15,57 +15,98 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
             text-align: center;
+            box-sizing: border-radius;
         }
+
+        /* Styling für das Profilfoto */
+        .avatar-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%; /* Macht das Bild kreisrund */
+            overflow: hidden;
+            margin-bottom: 25px;
+            border: 3px solid #6bb4ff; /* Dezenter blauer Rand */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #333; /* Fallback-Farbe */
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Verhindert Verzerrungen */
+        }
+
         h1 {
             font-size: 28px;
+            margin-top: 0;
             margin-bottom: 5px;
             font-weight: 600;
         }
+
         p {
             color: #a0a0a0;
             font-size: 16px;
             margin-top: 0;
-            margin-bottom: 40px;
+            margin-bottom: 45px;
+            max-width: 300px;
         }
+
         .btn {
             background-color: #ffffff;
             color: #121212;
-            padding: 15px 30px;
+            padding: 15px 35px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
             font-size: 18px;
             display: inline-block;
-            margin-bottom: 35px;
-            transition: transform 0.2s;
+            margin-bottom: 40px;
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
+
         .btn:active {
-            transform: scale(0.95);
+            transform: scale(0.96);
+            background-color: #e0e0e0;
         }
+
         .link-group {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 18px;
         }
+
         .link {
             color: #6bb4ff;
             text-decoration: none;
             font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .link:active {
+            opacity: 0.7;
         }
     </style>
 </head>
 <body>
 
+    <div class="avatar-container">
+        <img src="profile.jpg" alt="Dr. Florian Schmidt" class="avatar-img">
+    </div>
+
     <h1>Dr. Florian Schmidt</h1>
     <p>Tech Executive & Engineering Leader</p>
 
-    <a href="florian.vcf" class="btn">Kontakt speichern</a>
+    <a href="florian.vcf" class="btn">Save Contact</a>
 
     <div class="link-group">
-        <a href="https://dr-florian-schmidt.de" class="link">Zum Profil (Webseite)</a>
-        <a href="https://linkedin.com/in/dr-florian-schmidt" class="link">Auf LinkedIn vernetzen</a>
+        <a href="https://dr-florian-schmidt.de" class="link">Visit Profile (Website)</a>
+        <a href="https://linkedin.com/in/dr-florian-schmidt" class="link">Connect on LinkedIn</a>
     </div>
 
 </body>
