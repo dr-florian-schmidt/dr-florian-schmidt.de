@@ -96,7 +96,6 @@
 
         .nav-links a:hover { color: var(--accent); }
 
-        /* Mobile Optimierung für das Menü */
         @media (max-width: 600px) {
             .nav-container { padding: 0 1rem; }
             .nav-links { gap: 0.75rem; }
@@ -267,10 +266,11 @@
                 <div class="subtitle">International Tech Executive</div>
                 <div class="tagline">Scaling R&D • Strategic P&L Leadership • Global Tech Transformation</div>
                 <p>
-                    I combine deep technological expertise (Dr.-Ing. Software Engineering) with operational P&L leadership and strong intercultural competence. I specialize in the digital and business transformation of global R&D portfolios, turning complex organizations into profitable 'Delivery Machines'.
+                    I combine deep technological expertise (Dr.-Ing. Software Engineering) with operational P&L leadership and strong intercultural competence. My focus is on transforming complex, global R&D organizations into profitable "Delivery Machines".
                 </p>
                 <nav class="btn-group" aria-label="Contact and Social Links">
-                    <a href="mailto:contact@dr-florian-schmidt.de" class="btn btn-primary">Get in touch</a>
+                    <!-- href="#" verhindert das statische Auslesen, die js-mail Klasse hängt den EventListener an -->
+                    <a href="#" class="btn btn-primary js-mail">Get in touch</a>
                     <a href="https://www.linkedin.com/in/dr-florian-schmidt/" target="_blank" rel="noopener" class="btn btn-secondary">LinkedIn Profile</a>
                 </nav>
             </div>
@@ -372,13 +372,12 @@
             </div>
         </section>
 
-        <!-- Final Call to Action -->
         <section id="contact" class="cta-section" aria-labelledby="heading-contact">
             <div class="container">
                 <h2 id="heading-contact">Ready to discuss your next transformation?</h2>
                 <p>I am available for leadership mandates and business transformation roles in the international tech domain (GM / VP).</p>
                 <div class="btn-group">
-                    <a href="mailto:contact@dr-florian-schmidt.de" class="btn btn-primary">Get in touch</a>
+                    <a href="#" class="btn btn-primary js-mail">Get in touch</a>
                     <a href="https://www.linkedin.com/in/dr-florian-schmidt/" target="_blank" rel="noopener" class="btn btn-secondary">LinkedIn Profile</a>
                 </div>
             </div>
@@ -403,7 +402,8 @@
             <h2 id="modal-title-legal">Impressum / Legal Notice</h2>
             <div lang="de">
                 <p>Dr. Florian Schmidt<br>91074 Herzogenaurach<br>Germany</p>
-                <p>Contact: contact@dr-florian-schmidt.de</p>
+                <!-- Die E-Mail wird hier per JS dynamisch eingesetzt, im Source Code bleibt es leer/neutral -->
+                <p>Contact: <span id="mail-placeholder" style="color: var(--text-muted);">[Loading...]</span></p>
                 <p>Verantwortlich für den Inhalt: Dr. Florian Schmidt</p>
             </div>
         </div>
@@ -419,5 +419,29 @@
         </div>
     </div>
 
+    <!-- Obfuscation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Die Einzelteile der E-Mail (verwirrt simple Scraper)
+            var n = "contact";
+            var d = "dr-florian-schmidt.de";
+            var m = n + "@" + d;
+
+            // 1. Alle "Get in touch" Buttons funktionsfähig machen
+            var mailBtns = document.querySelectorAll('.js-mail');
+            mailBtns.forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.location.href = "mailto:" + m;
+                });
+            });
+
+            // 2. Klartext im Impressum durch einen klickbaren Link ersetzen
+            var placeholder = document.getElementById('mail-placeholder');
+            if (placeholder) {
+                placeholder.innerHTML = '<a href="mailto:' + m + '" style="color: var(--accent); text-decoration: none;">' + m + '</a>';
+            }
+        });
+    </script>
 </body>
 </html>
