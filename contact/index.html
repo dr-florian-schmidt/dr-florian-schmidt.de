@@ -35,8 +35,8 @@
             border-radius: 50%;
             overflow: hidden;
             margin-bottom: 25px;
-            border: 3px solid #0ea5e9; /* Angepasst an das Blau der Hauptseite */
-            box-shadow: 0 0 25px rgba(14, 165, 233, 0.25); /* Glow-Effekt wie auf Hauptseite */
+            border: 3px solid #0ea5e9;
+            box-shadow: 0 0 25px rgba(14, 165, 233, 0.25);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -65,7 +65,7 @@
         }
 
         .btn {
-            background-color: #0ea5e9; /* Konsistentes Primary-Button Design */
+            background-color: #0ea5e9;
             color: #ffffff;
             padding: 15px 35px;
             border-radius: 8px;
@@ -95,7 +95,7 @@
         }
 
         .link {
-            color: #0ea5e9; /* Angepasst an das Blau der Hauptseite */
+            color: #0ea5e9;
             text-decoration: none;
             font-size: 16px;
             font-weight: 500;
@@ -123,10 +123,28 @@
     <a href="florianschmidt.vcf" class="btn">Save Contact</a>
 
     <div class="link-group">
+        <!-- Neu: Dynamischer Email-Link -->
+        <a href="#" class="link js-mail">Send an E-Mail</a>
         <!-- Der Link geht ins Hauptverzeichnis zur Landingpage -->
         <a href="../" class="link">Visit Full Profile</a>
         <a href="https://linkedin.com/in/dr-florian-schmidt" class="link">Connect on LinkedIn</a>
     </div>
 
+    <!-- Obfuscation Script (gleiche Logik wie auf der Hauptseite) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var n = "contact";
+            var d = "dr-florian-schmidt.de";
+            var m = n + "@" + d;
+
+            var mailBtns = document.querySelectorAll('.js-mail');
+            mailBtns.forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.location.href = "mailto:" + m;
+                });
+            });
+        });
+    </script>
 </body>
 </html>
