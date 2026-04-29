@@ -422,7 +422,6 @@
     <!-- Obfuscation Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Die Einzelteile der E-Mail (verwirrt simple Scraper)
             var n = "contact";
             var d = "dr-florian-schmidt.de";
             var m = n + "@" + d;
@@ -430,10 +429,7 @@
             // 1. Alle "Get in touch" Buttons funktionsfähig machen
             var mailBtns = document.querySelectorAll('.js-mail');
             mailBtns.forEach(function(btn) {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    window.location.href = "mailto:" + m;
-                });
+                btn.setAttribute('href', 'mailto:' + m);
             });
 
             // 2. Klartext im Impressum durch einen klickbaren Link ersetzen
