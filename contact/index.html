@@ -130,7 +130,7 @@
         <a href="https://linkedin.com/in/dr-florian-schmidt" class="link">Connect on LinkedIn</a>
     </div>
 
-    <!-- Obfuscation Script (gleiche Logik wie auf der Hauptseite) -->
+    <!-- Obfuscation Script (Robuste Variante) -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var n = "contact";
@@ -139,10 +139,9 @@
 
             var mailBtns = document.querySelectorAll('.js-mail');
             mailBtns.forEach(function(btn) {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    window.location.href = "mailto:" + m;
-                });
+                // Wir setzen das Ziel direkt in das href-Attribut.
+                // Dadurch verhält es sich wie ein normaler Link und Pop-up-Blocker mischen sich nicht ein.
+                btn.setAttribute('href', 'mailto:' + m);
             });
         });
     </script>
